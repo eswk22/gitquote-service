@@ -1,0 +1,45 @@
+Resources:
+  CustomReviewTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: ${self:custom.stage}-customreview
+      AttributeDefinitions:
+        - AttributeName: profid
+          AttributeType: S
+      KeySchema:
+        - AttributeName: profid
+          KeyType: HASH
+      # Set the capacity based on the stage
+      ProvisionedThroughput:
+        ReadCapacityUnits: ${self:custom.tableThroughput}
+        WriteCapacityUnits: ${self:custom.tableThroughput}
+
+  ProjectEstimateTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: ${self:custom.stage}-projectestimate
+      AttributeDefinitions:
+        - AttributeName: type
+          AttributeType: S
+      KeySchema:
+        - AttributeName: type
+          KeyType: HASH
+      # Set the capacity based on the stage
+      ProvisionedThroughput:
+        ReadCapacityUnits: ${self:custom.tableThroughput}
+        WriteCapacityUnits: ${self:custom.tableThroughput}
+
+  tblRequestTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: ${self:custom.stage}-request
+      AttributeDefinitions:
+        - AttributeName: type
+          AttributeType: S
+      KeySchema:
+        - AttributeName: type
+          KeyType: HASH
+      # Set the capacity based on the stage
+      ProvisionedThroughput:
+        ReadCapacityUnits: ${self:custom.tableThroughput}
+        WriteCapacityUnits: ${self:custom.tableThroughput}
